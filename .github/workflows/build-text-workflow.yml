@@ -1,0 +1,31 @@
+name: Build And Test Workflow
+
+on:
+    push: # push event
+        branches:
+            - main # on main branch
+
+        
+jobs:
+    build:
+        name: Build Code
+        runs-on: ubuntu-latest  #Runner vm choice
+
+        steps:
+
+            - name: Checkout Code
+              uses: actions/checkout@v5
+
+            - name: Setup Node
+              uses: actions/node@v6
+              with:
+                node-version: latest
+
+            - name: Install Project Dependencies
+              run: npm ci
+
+            - name: test
+              run: npm run test
+
+            - name: Build
+              run: npm run build
