@@ -13,24 +13,24 @@ jobs:
 
         steps:
 
-            - name: Checkout Code
-              uses: actions/checkout@v5
+          - name: Checkout Code
+            uses: actions/checkout@v5
 
-            - name: Setup Node
-              uses: actions/node@v6
-              with:
+          - name: Setup Node
+            uses: actions/node@v6
+            with:
                 node-version: latest
 
-            - name: Install Project Dependencies
-              run: npm ci
+          - name: Install Project Dependencies
+            run: npm ci
 
-            - name: test
-              run: npm run test
+          - name: test
+            run: npm run test
 
-            - name: Build
-              run: npm run build
+          - name: Build
+            run: npm run build
 
-            - name: Display Context
-              run: |
+          - name: Display Context
+            run: |
                 echo "-----Github Context-----"
                 echo '${{toJson(github)}}'
